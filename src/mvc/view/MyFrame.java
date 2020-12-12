@@ -35,29 +35,29 @@ public class MyFrame extends JFrame {
         bar = new JMenuBar();
         this.setJMenuBar(bar);
         ArrayList<Action> menuItems = new ArrayList<>();
-        menuItems.add(new SwitchState("открыть файл",new ImageIcon("rectangle.gif"),
+        menuItems.add(new SwitchState("открыть файл",new ImageIcon(getClass().getResource("images/open.gif")),
                 new OpenFile(state)));
-        menuItems.add(new SwitchState("создать файл",new ImageIcon("rectangle.gif"),
+        menuItems.add(new SwitchState("создать файл",new ImageIcon(getClass().getResource("images/save.gif")),
                 new SaveFile(state)));
-        menuItems.add(new SwitchState("Line", new ImageIcon("line.gif"),
+        menuItems.add(new SwitchState("Line", new ImageIcon(getClass().getResource("images/Line.gif")),
                 new SwitchShape(state, new MyLine.Double())));
-        menuItems.add(new SwitchState("прямоугольник", new ImageIcon("rectangle.gif"),
+        menuItems.add(new SwitchState("прямоугольник", new ImageIcon(getClass().getResource("images/rectangle.gif")),
                 new SwitchShape(state, new Rectangle2D.Double())));
-        menuItems.add(new SwitchState("овал", new ImageIcon("ellipse.gif"),
+        menuItems.add(new SwitchState("овал", new ImageIcon(getClass().getResource("images/ellipse.gif")),
                 new SwitchShape(state, new Ellipse2D.Double())));
-        menuItems.add(new SwitchState("Бордюр", new ImageIcon("border.gif"),
+        menuItems.add(new SwitchState("Бордюр", new ImageIcon(getClass().getResource("images/Border.gif")),
                 new Decorator10(state)));
-        menuItems.add(new SwitchState("незалитый", new ImageIcon("nofill.gif"),
+        menuItems.add(new SwitchState("незалитый", new ImageIcon(getClass().getResource("images/nofill.gif")),
                 new SwitchFill(state, MyShape.FillBehavior.NO_FILL)));
-        menuItems.add(new SwitchState("залитый", new ImageIcon("fill.gif"),
+        menuItems.add(new SwitchState("залитый", new ImageIcon(getClass().getResource("images/fill.gif")),
                 new SwitchFill(state, MyShape.FillBehavior.FILL)));
-        menuItems.add(new SwitchState("рисовать", new ImageIcon("draw.gif"),
+        menuItems.add(new SwitchState("рисовать", new ImageIcon(getClass().getResource("images/draw.gif")),
                 new SwitchActivity(state, new Draw())));
-        menuItems.add(new SwitchState("двигать", new ImageIcon("move.gif"),
+        menuItems.add(new SwitchState("двигать", new ImageIcon(getClass().getResource("images/move.gif")),
                 new SwitchActivity(state, new Move())));
-        menuItems.add(new SwitchUndo("undo",new ImageIcon("undo.gif"),undoMachine));
-        menuItems.add(new SwitchRedo("redo",new ImageIcon("redo.gif"),undoMachine));
-        menuItems.add(new SwitchState("выбор цвета", new ImageIcon("colors.gif"),
+        menuItems.add(new SwitchUndo("undo",new ImageIcon(getClass().getResource("images/undo.gif")),undoMachine));
+        menuItems.add(new SwitchRedo("redo",new ImageIcon(getClass().getResource("images/redo.gif")),undoMachine));
+        menuItems.add(new SwitchState("выбор цвета", new ImageIcon(getClass().getResource("images/colors.gif")),
                 new SwitchColor(state)));
         undoMachine.addObserver((SwitchUndo)menuItems.get(menuItems.size()-3));
         undoMachine.addObserver((SwitchRedo)menuItems.get(menuItems.size()-2));
