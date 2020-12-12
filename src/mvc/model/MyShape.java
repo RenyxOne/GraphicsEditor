@@ -6,7 +6,7 @@ import java.awt.geom.Rectangle2D;
 import java.awt.geom.RectangularShape;
 import java.io.Serializable;
 
-public class MyShape implements Serializable{
+public class MyShape implements Serializable, ShapeDecorator {
 
     Color color;
     RectangularShape shape;
@@ -42,8 +42,13 @@ public class MyShape implements Serializable{
         shape.setFrameFromDiagonal(pd[0], pd[1]);
     }
 
-    void draw(Graphics2D g) {
+    public void draw(Graphics2D g) {
         fb.draw(g,color,shape);
+    }
+
+    @Override
+    public void setParametr(int p) {
+
     }
 
     public void setColor(Color color) {

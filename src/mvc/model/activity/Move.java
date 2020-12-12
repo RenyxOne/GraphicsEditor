@@ -2,6 +2,8 @@ package mvc.model.activity;
 
 import mvc.model.Model;
 import mvc.model.MyShape;
+import mvc.model.ShapeDecorator;
+
 import java.awt.geom.Point2D;
 
 /**
@@ -11,8 +13,8 @@ import java.awt.geom.Point2D;
 public class Move implements Activity{
     Model model;
     Point2D[] p;
-    MyShape shapeNew;
-    MyShape shapeOld;
+    ShapeDecorator shapeNew;
+    ShapeDecorator shapeOld;
 
     public Move(Model model) {
         this.model = model;

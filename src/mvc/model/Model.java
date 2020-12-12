@@ -21,11 +21,11 @@ import java.util.logging.Logger;
 
 public class Model extends Observable {
 
-    MyShape currentShape = null;
-    MyShape sampleShape;
-    ArrayList<MyShape> list;
+    ShapeDecorator currentShape = null;
+    ShapeDecorator sampleShape;
+    ArrayList<ShapeDecorator> list;
 
-    public void setSampleShape(MyShape sampleShape) {
+    public void setSampleShape(ShapeDecorator sampleShape) {
         this.sampleShape = sampleShape;
     }
 
@@ -38,13 +38,13 @@ public class Model extends Observable {
         list = new ArrayList<>();
     }
 
-    public MyShape inintCurrentShape() {
+    public ShapeDecorator inintCurrentShape() {
         currentShape = sampleShape.clone();
         list.add(currentShape);
         return currentShape;
     }
 
-    public void setMyShape(MyShape myShape) {
+    public void setMyShape(ShapeDecorator myShape) {
         this.currentShape = myShape;
     }
 
@@ -56,15 +56,15 @@ public class Model extends Observable {
 
     public void draw(Graphics2D g) {
         if (list != null) {
-            for (MyShape s : list) {
+            for (ShapeDecorator s : list) {
                 s.draw(g);
             }
         }
     }
 
-    public MyShape findShape(Point2D p1) {
+    public ShapeDecorator findShape(Point2D p1) {
         if (list != null) {
-            for (MyShape s : list) {
+            for (ShapeDecorator s : list) {
                 if (s.contains(p1)) {
                     currentShape = s;
                     return currentShape;
@@ -91,21 +91,21 @@ public class Model extends Observable {
     }
 
     ///////////////////////undo/////////////////////////
-    public MyShape ctrlZ_Shape() {
-        MyShape s = list.remove(list.size() - 1);
+    public ShapeDecorator ctrlZ_Shape() {
+        ShapeDecorator s = list.remove(list.size() - 1);
         setChanged();
         notifyObservers();
         return s;
     }
 
-    public void setActiveShape(MyShape activeShape) {
+    public void setActiveShape(ShapeDecorator activeShape) {
         this.currentShape = activeShape;
         list.add(currentShape);
         setChanged();
         notifyObservers();
     }
 
-    public void reseverMove(MyShape shapeNew, Point2D[] oldP) {
+    public void reseverMove(ShapeDecorator shapeNew, Point2D[] oldP) {
         shapeNew.setFrame(oldP);
         currentShape = shapeNew;
         setChanged();
@@ -124,7 +124,7 @@ public class Model extends Observable {
         try {
             ObjectInputStream fin = new ObjectInputStream(new FileInputStream(file));
             try {
-                list=(ArrayList<MyShape>)fin.readObject();
+                list=(ArrayList<ShapeDecorator>)fin.readObject();
                 currentShape =list.get(list.size()-1);
                 setChanged();
                 notifyObservers();

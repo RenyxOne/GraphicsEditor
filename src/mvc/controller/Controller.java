@@ -5,6 +5,7 @@ import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
 import mvc.model.Model;
 import mvc.model.MyShape;
+import mvc.model.ShapeDecorator;
 import mvc.model.UndoMachine;
 import mvc.model.activity.Activity;
 import mvc.view.MyFrame;
@@ -18,7 +19,7 @@ public class Controller {
     MyPanel panel;
     Point2D [] pd;
     State state;
-    MyShape shape;
+    ShapeDecorator shape;
     public Controller() {
         model = new Model();
         undoMachine = new UndoMachine();

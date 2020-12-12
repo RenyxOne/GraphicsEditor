@@ -2,13 +2,15 @@ package mvc.model.activity;
 
 import mvc.model.Model;
 import mvc.model.MyShape;
+import mvc.model.ShapeDecorator;
+
 import java.awt.geom.Point2D;
 
 
 public class Draw implements Activity{
     Model model;
     Point2D[] p;
-    MyShape myShape;
+    ShapeDecorator myShape;
 
     public Draw(Model model) {
         this.model = model;
@@ -22,7 +24,7 @@ public class Draw implements Activity{
     @Override
     public void getPointOne(Point2D p1){
         p[0] = p1;
-        myShape =model.inintCurrentShape();
+        myShape = model.inintCurrentShape();
     }
 
     public void getPointTwo(Point2D p1){

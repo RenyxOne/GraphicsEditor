@@ -4,12 +4,13 @@ import menu.*;
 import mvc.model.*;
 import mvc.model.activity.*;
 import mvc.controller.*;
-import mvc.model.myLine.MyLine;
+import mvc.model.line.MyLine;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.geom.Ellipse2D;
+import java.awt.geom.Line2D;
 import java.awt.geom.Rectangle2D;
 import java.util.ArrayList;
 import javax.swing.Action;
@@ -44,6 +45,8 @@ public class MyFrame extends JFrame {
                 new SwitchShape(state, new Rectangle2D.Double())));
         menuItems.add(new SwitchState("овал", new ImageIcon("ellipse.gif"),
                 new SwitchShape(state, new Ellipse2D.Double())));
+        menuItems.add(new SwitchState("Бордюр", new ImageIcon("border.gif"),
+                new Decorator10(state)));
         menuItems.add(new SwitchState("незалитый", new ImageIcon("nofill.gif"),
                 new SwitchFill(state, MyShape.FillBehavior.NO_FILL)));
         menuItems.add(new SwitchState("залитый", new ImageIcon("fill.gif"),

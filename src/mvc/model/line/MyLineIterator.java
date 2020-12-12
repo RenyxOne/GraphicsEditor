@@ -1,4 +1,5 @@
-package mvc.model.myLine;
+package mvc.model.line;
+
 
 import java.awt.geom.AffineTransform;
 import java.awt.geom.Line2D;
@@ -118,4 +119,3 @@ class MyLineIterator implements PathIterator {
         return type;
     }
 }
-
