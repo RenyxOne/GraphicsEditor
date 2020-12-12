@@ -14,9 +14,9 @@ public class BorderDecorator implements ShapeDecorator{
     @Override
     public void draw(Graphics2D g) {
         RectangularShape border = (RectangularShape) shape.getShape().clone();
-        Point2D leftUp = new Point2D.Double(border.getMinX()-borderWidth, border.getMaxY() + borderWidth);
-        Point2D rightDown = new Point2D.Double(border.getMaxX()+borderWidth, border.getMinY() - borderWidth);
-        border.setFrameFromDiagonal(leftUp, rightDown);
+        Point2D left = new Point2D.Double(border.getMinX()-borderWidth, border.getMinY() - borderWidth);
+        Point2D right = new Point2D.Double(border.getMaxX()+borderWidth, border.getMaxY() + borderWidth);
+        border.setFrameFromDiagonal(left, right);
         shape.draw(g);
         g.draw(border);
     }
