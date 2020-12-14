@@ -1,5 +1,7 @@
 package mvc.model;
 
+import mvc.model.shapes.ShapeInterface;
+
 import java.awt.*;
 import java.awt.geom.Point2D;
 import java.awt.geom.RectangularShape;
@@ -13,10 +15,10 @@ public class BorderDecorator implements ShapeDecorator{
 
     @Override
     public void draw(Graphics2D g) {
-        RectangularShape border = (RectangularShape) shape.getShape().clone();
+        ShapeInterface border = (ShapeInterface) shape.getShape();
         Point2D left = new Point2D.Double(border.getMinX()-borderWidth, border.getMinY() - borderWidth);
         Point2D right = new Point2D.Double(border.getMaxX()+borderWidth, border.getMaxY() + borderWidth);
-        border.setFrameFromDiagonal(left, right);
+        border.setShapeByTwoPoint(left, right);
         shape.draw(g);
         g.draw(border);
     }
@@ -37,7 +39,7 @@ public class BorderDecorator implements ShapeDecorator{
     }
 
     @Override
-    public void setShape(RectangularShape r) {
+    public void setShape(ShapeInterface r) {
         shape.setShape(r);
     }
 
@@ -47,12 +49,17 @@ public class BorderDecorator implements ShapeDecorator{
     }
 
     @Override
+    public MyShape.FillBehavior getFb(){
+        return shape.getFb();
+    };
+
+    @Override
     public boolean contains(Point2D p) {
         return shape.contains(p);
     }
 
     @Override
-    public RectangularShape getShape() {
+    public ShapeInterface getShape() {
         return shape.getShape();
     }
 

@@ -5,9 +5,9 @@ import mvc.model.MyShape;
 import mvc.model.activity.Activity;
 import mvc.model.activity.Draw;
 import mvc.model.ShapeDecorator;
+import mvc.model.shapes.ShapeInterface;
 
 import java.awt.*;
-import java.awt.geom.RectangularShape;
 public class State {
     //from controller
     Model model;
@@ -15,7 +15,7 @@ public class State {
     ShapeDecorator shape;
     Color color;
     MyShape.FillBehavior fb;
-    RectangularShape rectangularShape;
+    ShapeInterface shapeInterface;
     Activity activity;
 
     public void setActivity(Activity activity) {
@@ -48,10 +48,10 @@ public class State {
         model.setSampleShape(shape);
     }
 
-    public void setRectangularShape(Shape rectangularShape) {
-        if (rectangularShape == null) return;
-        this.rectangularShape = (RectangularShape)rectangularShape;
-        shape.setShape((RectangularShape)rectangularShape);
+    public void setShapeInterface(Shape ShapeInterface) {
+        if (ShapeInterface == null) return;
+        this.shapeInterface = (ShapeInterface)ShapeInterface;
+        shape.setShape((ShapeInterface)shapeInterface);
         model.setSampleShape(shape);
     }
 
@@ -59,9 +59,12 @@ public class State {
         return shape;
     }
 
+    public Color getColor(){
+        return color;
+    }
+
     public Model getModel() {
         return model;
     }
-
 
 }

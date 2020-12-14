@@ -1,5 +1,8 @@
 package mvc.model;
 
+import mvc.model.shapes.MyRectangle;
+import mvc.model.shapes.ShapeInterface;
+
 import java.awt.*;
 import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
@@ -9,10 +12,10 @@ import java.io.Serializable;
 public class MyShape implements Serializable, ShapeDecorator {
 
     Color color;
-    RectangularShape shape;
+    ShapeInterface shape;
     FillBehavior fb;
 
-    public MyShape(RectangularShape shape) {
+    public MyShape(ShapeInterface shape) {
         this.shape = shape;
         color = Color.BLUE;
         fb = FillBehavior.NO_FILL;
@@ -20,11 +23,11 @@ public class MyShape implements Serializable, ShapeDecorator {
 
     public MyShape() {
         color = Color.BLUE;
-        shape = new Rectangle2D.Double();
+        shape = new MyRectangle();
         fb =  FillBehavior.NO_FILL;;
     }
 
-    public MyShape(Color color, RectangularShape shape, FillBehavior fb) {
+    public MyShape(Color color, ShapeInterface shape, FillBehavior fb) {
         this.color = color;
         this.shape = shape;
         this.fb = fb;
@@ -34,12 +37,12 @@ public class MyShape implements Serializable, ShapeDecorator {
         this.fb = fb;
     }
 
-    public void setShape(RectangularShape shape) {
+    public void setShape(ShapeInterface shape) {
         this.shape = shape;
     }
 
     public void setFrame(Point2D[] pd) {
-        shape.setFrameFromDiagonal(pd[0], pd[1]);
+        shape.setShapeByTwoPoint(pd[0], pd[1]);
     }
 
     public void draw(Graphics2D g) {
@@ -47,9 +50,7 @@ public class MyShape implements Serializable, ShapeDecorator {
     }
 
     @Override
-    public void setParametr(int p) {
-
-    }
+    public void setParametr(int p) { }
 
     public void setColor(Color color) {
         this.color = color;
@@ -63,14 +64,14 @@ public class MyShape implements Serializable, ShapeDecorator {
     }
     public MyShape clone() {
         MyShape s = new MyShape();
-        RectangularShape s1 = (RectangularShape) shape.clone();
+        ShapeInterface s1 = (ShapeInterface) shape.clone();
         s.setColor(color);
         s.setShape(s1);
         s.fb = this.fb;
         return s;
     }
 
-    public RectangularShape getShape() {
+    public ShapeInterface getShape() {
         return shape;
     }
 
@@ -81,7 +82,7 @@ public class MyShape implements Serializable, ShapeDecorator {
     public enum FillBehavior implements Serializable{
         FILL {
             @Override
-            public void draw(Graphics2D g,  Color c, RectangularShape sh) {
+            public void draw(Graphics2D g,  Color c, ShapeInterface sh) {
                 Paint paint = g.getPaint();
                 g.setPaint(c);
                 g.fill(sh);
@@ -90,14 +91,14 @@ public class MyShape implements Serializable, ShapeDecorator {
         } ,
         NO_FILL {
             @Override
-            public void draw(Graphics2D g, Color c, RectangularShape sh) {
+            public void draw(Graphics2D g, Color c, ShapeInterface sh) {
                 Paint paint = g.getPaint();
                 g.setPaint(c);
                 g.draw(sh);
                 g.setPaint(paint);
             }
         };
-        public abstract void  draw(Graphics2D g, Color c, RectangularShape sh);
+        public abstract void  draw(Graphics2D g, Color c, ShapeInterface sh);
 
     }
 

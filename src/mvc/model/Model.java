@@ -1,5 +1,7 @@
 package mvc.model;
 
+import mvc.model.shapes.ShapeInterface;
+
 import java.awt.Graphics2D;
 import java.awt.Shape;
 import java.awt.geom.AffineTransform;
@@ -62,6 +64,11 @@ public class Model extends Observable {
         }
     }
 
+    public void upd(){
+        this.setChanged();
+        this.notifyObservers();
+    }
+
     public ShapeDecorator findShape(Point2D p1) {
         if (list != null) {
             for (ShapeDecorator s : list) {
@@ -78,12 +85,12 @@ public class Model extends Observable {
         double deltaX = p[0].getX() - p[1].getX();
         double deltaY = p[0].getY() - p[1].getY();
         if (currentShape != null) {
-            RectangularShape s = currentShape.getShape();
+            ShapeInterface s = currentShape.getShape();
             double xMin = s.getMinX() - deltaX;
             double yMin = s.getMinY() - deltaY;
             double xMax = s.getMaxX() - deltaX;
             double yMax = s.getMaxY() - deltaY;
-            s.setFrameFromDiagonal(xMin, yMin, xMax, yMax);
+            s.setShapeByTwoPoint(xMin, yMin, xMax, yMax);
             p[0] = p[1];
             setChanged();
             notifyObservers();
