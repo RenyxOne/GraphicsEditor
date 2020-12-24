@@ -6,6 +6,7 @@ import mvc.model.activity.Activity;
 import mvc.model.activity.Draw;
 import mvc.model.ShapeDecorator;
 import mvc.model.shapes.ShapeInterface;
+import mvc.view.BorderDialog;
 
 import java.awt.*;
 public class State {
@@ -34,6 +35,7 @@ public class State {
 
     public void setShape(ShapeDecorator shape) {
         this.shape = shape;
+        model.setSampleShape(shape);
     }
 
     public void setColor(Color color) {
@@ -48,11 +50,15 @@ public class State {
         model.setSampleShape(shape);
     }
 
-    public void setShapeInterface(Shape ShapeInterface) {
-        if (ShapeInterface == null) return;
-        this.shapeInterface = (ShapeInterface)ShapeInterface;
-        shape.setShape((ShapeInterface)shapeInterface);
-        model.setSampleShape(shape);
+    public void setShapeInterface(ShapeInterface shapeInterface) {
+        if (shapeInterface == null) return;
+        this.shapeInterface = (ShapeInterface)shapeInterface.clone();
+        shape.setShape(shapeInterface);
+        //model.setSampleShape(shape);
+    }
+
+    public void initBorderDialog(){
+        new BorderDialog(this);
     }
 
     public ShapeDecorator getShape() {

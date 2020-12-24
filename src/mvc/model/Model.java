@@ -3,11 +3,7 @@ package mvc.model;
 import mvc.model.shapes.ShapeInterface;
 
 import java.awt.Graphics2D;
-import java.awt.Shape;
-import java.awt.geom.AffineTransform;
-import java.awt.geom.Area;
 import java.awt.geom.Point2D;
-import java.awt.geom.RectangularShape;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -35,7 +31,7 @@ public class Model extends Observable {
         list = new ArrayList<>();
     }
 
-    public Model(MyShape sampleShape) {
+    public Model(ShapeDecorator sampleShape) {
         this.sampleShape = sampleShape;
         list = new ArrayList<>();
     }

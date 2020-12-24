@@ -34,4 +34,9 @@ public class MyLine extends Line2D.Double implements ShapeInterface {
     public double getMaxY() {
         return getY2();
     }
+
+    @Override
+    public ShapeInterface clone(){
+        return (MyLine)super.clone();
+    }
 }

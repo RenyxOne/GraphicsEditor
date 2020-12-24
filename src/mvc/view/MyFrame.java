@@ -33,15 +33,15 @@ public class MyFrame extends JFrame {
                 new OpenFile(state)));
         menuItems.add(new SwitchState("создать файл",new ImageIcon(getClass().getResource("images/save.gif")),
                 new SaveFile(state)));
-        menuItems.add(new SwitchState("Line", new ImageIcon(getClass().getResource("images/Line.gif")),
+        menuItems.add(new SwitchState("Линия", new ImageIcon(getClass().getResource("images/Line.gif")),
                 new SwitchShape(state, new MyLine())));
-        menuItems.add(new SwitchState("прямоугольник", new ImageIcon(getClass().getResource("images/rectangle.gif")),
+        menuItems.add(new SwitchState("Прямоугольник", new ImageIcon(getClass().getResource("images/rectangle.gif")),
                 new SwitchShape(state, new MyRectangle())));
-        menuItems.add(new SwitchState("овал", new ImageIcon(getClass().getResource("images/ellipse.gif")),
+        menuItems.add(new SwitchState("Овал", new ImageIcon(getClass().getResource("images/ellipse.gif")),
                 new SwitchShape(state, new MyEllipse())));
         menuItems.add(new SwitchState("Бордюр", new ImageIcon(getClass().getResource("images/Border.gif")),
                 new Decorator10(state)));
-        menuItems.add(new SwitchState("Удалить бордюр", new ImageIcon(getClass().getResource("images/BorderDel.gif")),
+        menuItems.add(new SwitchState("Удалить бордюры", new ImageIcon(getClass().getResource("images/BorderDel.gif")),
                 new DelDecor(state)));
         menuItems.add(new SwitchState("незалитый", new ImageIcon(getClass().getResource("images/nofill.gif")),
                 new SwitchFill(state, MyShape.FillBehavior.NO_FILL)));
@@ -62,10 +62,48 @@ public class MyFrame extends JFrame {
         ArrayList<JMenu> menus = new ArrayList<>();
         menus.add(new JMenu("Файл"));
         menus.add(new JMenu("Фигура"));
+        menus.add(new JMenu("Бордюр"));
         menus.add(new JMenu("Заливка"));
         menus.add(new JMenu("Действие"));
         menus.add(new JMenu("Undo/redo"));
         menus.add(new JMenu("Цвет"));
+
+        //save open
+        bar.add(menus.get(0));
+        menus.get(0).add(menuItems.get(0));
+        menus.get(0).add(menuItems.get(1));
+
+        //фигуры
+        bar.add(menus.get(1));
+        menus.get(1).add(menuItems.get(2));
+        menus.get(1).add(menuItems.get(3));
+        menus.get(1).add(menuItems.get(4));
+
+        //Бордюр / удалить все бордюры
+        bar.add(menus.get(2));
+        menus.get(2).add(menuItems.get(5));
+        menus.get(2).add(menuItems.get(6));
+
+        //Заливка / удалить все бордюры
+        bar.add(menus.get(3));
+        menus.get(3).add(menuItems.get(7));
+        menus.get(3).add(menuItems.get(8));
+
+        //Действия
+        bar.add(menus.get(4));
+        menus.get(4).add(menuItems.get(9));
+        menus.get(4).add(menuItems.get(10));
+
+        //undo redo
+        bar.add(menus.get(5));
+        menus.get(5).add(menuItems.get(11));
+        menus.get(5).add(menuItems.get(12));
+
+        //цвет
+        bar.add(menus.get(6));
+        menus.get(6).add(menuItems.get(13));
+
+        /*
         int i = 0;
         int k = menuItems.size()-2;
         for (JMenu m : menus) {
@@ -79,6 +117,8 @@ public class MyFrame extends JFrame {
                 m.add(menuItems.get(i));
             }
         }
+        */
+
         JToolBar toolBar = new JToolBar();
         for (Action x : menuItems) {
             toolBar.add(x);

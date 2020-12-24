@@ -14,4 +14,9 @@ public class MyEllipse extends Ellipse2D.Double implements ShapeInterface {
     public void setShapeByTwoPoint(Point2D first, Point2D second) {
         setFrameFromDiagonal(first,second);
     }
+
+    @Override
+    public ShapeInterface clone(){
+        return (MyEllipse)super.clone();
+    }
 }

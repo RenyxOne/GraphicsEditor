@@ -50,7 +50,7 @@ public class MyShape implements Serializable, ShapeDecorator {
     }
 
     @Override
-    public void setParametr(int p) { }
+    public void setParametr(int p, Color c) { }
 
     public void setColor(Color color) {
         this.color = color;
@@ -62,9 +62,9 @@ public class MyShape implements Serializable, ShapeDecorator {
     public boolean contains(Point2D p){
         return shape.contains(p);
     }
-    public MyShape clone() {
+    public ShapeDecorator clone() {
         MyShape s = new MyShape();
-        ShapeInterface s1 = (ShapeInterface) shape.clone();
+        ShapeInterface s1 = shape.clone();
         s.setColor(color);
         s.setShape(s1);
         s.fb = this.fb;

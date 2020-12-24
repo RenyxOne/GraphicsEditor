@@ -19,7 +19,6 @@ public class Controller {
     MyPanel panel;
     Point2D [] pd;
     State state;
-    ShapeDecorator shape;
     public Controller() {
         model = new Model();
         undoMachine = new UndoMachine();
