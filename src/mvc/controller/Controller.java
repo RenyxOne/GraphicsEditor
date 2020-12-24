@@ -4,7 +4,6 @@ import java.awt.Graphics2D;
 import java.awt.geom.Point2D;
 import mvc.model.Model;
 import mvc.model.MyShape;
-import mvc.model.ShapeDecorator;
 import mvc.model.UndoMachine;
 import mvc.model.activity.Activity;
 import mvc.model.shapes.MyRectangle;

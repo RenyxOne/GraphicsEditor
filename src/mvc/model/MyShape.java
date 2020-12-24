@@ -5,8 +5,6 @@ import mvc.model.shapes.ShapeInterface;
 
 import java.awt.*;
 import java.awt.geom.Point2D;
-import java.awt.geom.Rectangle2D;
-import java.awt.geom.RectangularShape;
 import java.io.Serializable;
 
 public class MyShape implements Serializable, ShapeDecorator {

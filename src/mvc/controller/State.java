@@ -54,7 +54,6 @@ public class State {
         if (shapeInterface == null) return;
         this.shapeInterface = (ShapeInterface)shapeInterface.clone();
         shape.setShape(shapeInterface);
-        //model.setSampleShape(shape);
     }
 
     public void initBorderDialog(){
