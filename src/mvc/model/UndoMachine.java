@@ -126,6 +126,7 @@ public class UndoMachine extends Observable {
         void deleteHistory() {
             if (!activityList.isEmpty()) {
                 for (int i = undoIterator; i < activityList.size(); i++) {
+                    if (i <0) i=0;
                     activityList.remove(i);
                 }
             }

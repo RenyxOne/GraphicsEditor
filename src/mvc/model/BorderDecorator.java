@@ -4,8 +4,9 @@ import mvc.model.shapes.ShapeInterface;
 
 import java.awt.*;
 import java.awt.geom.Point2D;
+import java.io.Serializable;
 
-public class BorderDecorator implements ShapeDecorator{
+public class BorderDecorator implements Serializable, ShapeDecorator{
     ShapeDecorator shape;
     int borderWidth;
     Color borderColor;
